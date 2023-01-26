@@ -63,6 +63,9 @@ public class MovieRepository {
     }
 
     public boolean delete_DirectorByName(@RequestParam String dirName) {
+        if(dirMoviePair.containsKey(dirName))
+            dirMoviePair.remove(dirName);
+
         for(int i = 0; i < directorList.size(); i ++) {
             if(directorList.get(i).getName().equals(dirName)) {
                 directorList.remove(i);
@@ -73,6 +76,7 @@ public class MovieRepository {
     }
 
     public boolean delete_AllDirectors() {
+        dirMoviePair = new HashMap<>();
         directorList = new ArrayList<>();
         return true;
     }
