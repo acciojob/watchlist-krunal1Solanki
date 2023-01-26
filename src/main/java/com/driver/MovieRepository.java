@@ -38,10 +38,8 @@ public class MovieRepository {
     }
 
     public Movie get_MovieByName(String name) {
-        System.out.println(name);
         for(Movie m : moviesList) {
             if(m.getName().equals(name)) {
-                System.out.print(m.getName());
                 return m;
             }
         }

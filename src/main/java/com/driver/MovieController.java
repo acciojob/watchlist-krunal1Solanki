@@ -20,22 +20,22 @@ public class MovieController {
     }
 
     @PutMapping("/movies/add-movie-director-pair")
-    public ResponseEntity addMovieDirectorPair(@RequestParam String movieName, @RequestParam String dirName) {
+    public ResponseEntity addMovieDirectorPair(@RequestParam("movieName") String movieName, @RequestParam("dirName") String dirName) {
         return movieService.add_MovieDirectorPair(movieName, dirName);
     }
 
     @GetMapping("/movies/get-movie-by-name/{name}")
-    public ResponseEntity getMovieByName(@PathVariable String name) {
+    public ResponseEntity getMovieByName(@PathVariable("name") String name) {
         return movieService.get_MovieByName(name);
     }
 
     @GetMapping("/movies/get-director-by-name/{name}")
-    public ResponseEntity getDirectorByName(@PathVariable String name) {
+    public ResponseEntity getDirectorByName(@PathVariable("name") String name) {
         return movieService.get_DirectorByName(name);
     }
 
     @GetMapping("/movies/get-movies-by-director-name/{director}")
-    public ResponseEntity getMoviesByDirectorName(@PathVariable String dirName) {
+    public ResponseEntity getMoviesByDirectorName(@PathVariable("director") String dirName) {
         return movieService.get_MoviesByDirectorName(dirName);
     }
 
@@ -45,7 +45,7 @@ public class MovieController {
     }
 
     @DeleteMapping("/movies/delete-director-by-name")
-    public ResponseEntity deleteDirectorByName(@RequestParam String dirName) {
+    public ResponseEntity deleteDirectorByName(@RequestParam("dirName") String dirName) {
         return movieService.delete_DirectorByName(dirName);
     }
 

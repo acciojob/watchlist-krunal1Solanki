@@ -33,13 +33,13 @@ public class MovieService {
 
     public ResponseEntity get_DirectorByName(@PathVariable String name) {
         Object o = movieRepository.get_DirectorByName(name);
-        return o == null ? new ResponseEntity<>(HttpStatus.NOT_FOUND) : new ResponseEntity<>(o, HttpStatus.FOUND);
+        return o == null ? new ResponseEntity<>(new String("Not Found"),HttpStatus.NOT_FOUND) : new ResponseEntity<>(o, HttpStatus.FOUND);
 
     }
 
     public ResponseEntity get_MoviesByDirectorName(@PathVariable String dirName) {
         Object o = movieRepository.get_MoviesByDirectorName(dirName);
-        return o == null ? new ResponseEntity<>(HttpStatus.NOT_FOUND) : new ResponseEntity<>(o, HttpStatus.FOUND);
+        return o == null ? new ResponseEntity<>(new String("Not Found"),HttpStatus.NOT_FOUND) : new ResponseEntity<>(o, HttpStatus.FOUND);
     }
 
     public ResponseEntity find_AllMovies() {
