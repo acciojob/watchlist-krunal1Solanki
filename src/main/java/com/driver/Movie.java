@@ -34,4 +34,8 @@ public class Movie {
         this.durationInMinutes = durationInMinutes;
         this.imdbRating = imdbRating;
     }
+
+    public Movie() {
+
+    }
 }
