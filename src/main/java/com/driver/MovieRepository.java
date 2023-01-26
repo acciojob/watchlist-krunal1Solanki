@@ -15,17 +15,17 @@ public class MovieRepository {
     List<Director> directorList = new ArrayList<>();
 
     HashMap<String, List<String>> dirMoviePair = new HashMap<>();
-    public boolean add_Movie(@RequestBody Movie movie) {
+    public boolean add_Movie(Movie movie) {
         moviesList.add(movie);
         return true;
     }
 
-    public boolean add_Director(@RequestBody Director director) {
+    public boolean add_Director(Director director) {
         directorList.add(director);
         return true;
     }
 
-    public boolean add_MovieDirectorPair(@RequestParam String movieName, @RequestParam String dirName) {
+    public boolean add_MovieDirectorPair(String movieName, String dirName) {
         if(dirMoviePair.containsKey(dirName)) {
             dirMoviePair.get(dirName).add(movieName);
         } else {
@@ -37,9 +37,11 @@ public class MovieRepository {
         return true;
     }
 
-    public Movie get_MovieByName(@PathVariable String name) {
+    public Movie get_MovieByName(String name) {
+        System.out.println(name);
         for(Movie m : moviesList) {
             if(m.getName().equals(name)) {
+                System.out.print(m.getName());
                 return m;
             }
         }
