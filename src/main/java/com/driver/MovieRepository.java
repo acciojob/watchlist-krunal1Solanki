@@ -14,7 +14,7 @@ public class MovieRepository {
     public String addMovie(Movie movie){
         for(int i=0;i<mv.size();i++){
             Movie m = mv.get(i);
-            if(m.getName().equals(movie.getName())){
+            if(m.getName().equals(movie.getName()) && m.getDurationInMinutes() == movie.getDurationInMinutes() && m.getImdbRating() == movie.getImdbRating()){
                 return "Movie already added.";
             }
         }
@@ -39,11 +39,13 @@ public class MovieRepository {
         for(int i=0;i<mv.size();i++){
             if(mv.get(i).getName().equals(movieName)){
                 m = mv.get(i);
+                break;
             }
         }
         for(int i=0;i<dr.size();i++){
             if(dr.get(i).getName().equals(directorName)){
                 d = dr.get(i);
+                break;
             }
         }
 
@@ -119,6 +121,12 @@ public class MovieRepository {
     }
 
     public String deleteAllDirectors(){
+        for(int i=0;i<dr.size();i++){
+            ArrayList<Movie> ar = mp.get(dr.get(i));
+            for(int j=0;j<ar.size();j++){
+                mv.remove(ar.get(j));
+            }
+        }
         mp.clear();
         dr.clear();
         return "All the directors and movies removed successfully.";
