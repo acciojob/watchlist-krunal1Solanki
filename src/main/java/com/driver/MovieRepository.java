@@ -123,7 +123,9 @@ public class MovieRepository {
     public String deleteAllDirectors(){
         for(int i=0;i<dr.size();i++){
             ArrayList<Movie> ar = mp.get(dr.get(i));
-            ar.clear();
+            for(int j=0;j<ar.size();j++){
+                mv.remove(ar.get(j));
+            }
         }
         mp.clear();
         dr.clear();
