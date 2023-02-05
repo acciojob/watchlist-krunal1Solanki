@@ -10,10 +10,11 @@ public class MovieRepository {
     public ArrayList<Director> dr = new ArrayList<>();
     public Map<Director,ArrayList<Movie>> mp = new HashMap<>();
 
+
     public String addMovie(Movie movie){
         for(int i=0;i<mv.size();i++){
             Movie m = mv.get(i);
-            if(m.getName().equals(movie.getName()) && m.getDurationInMinutes() == movie.getDurationInMinutes() && m.getImdbRating() == movie.getImdbRating()){
+            if(m.getName().equals(movie.getName())){
                 return "Movie already added.";
             }
         }
@@ -118,12 +119,6 @@ public class MovieRepository {
     }
 
     public String deleteAllDirectors(){
-        for(int i=0;i<dr.size();i++){
-            ArrayList<Movie> ar = mp.get(dr.get(i));
-            for(int j=0;j<ar.size();j++){
-                mv.remove(ar.get(j));
-            }
-        }
         mp.clear();
         dr.clear();
         return "All the directors and movies removed successfully.";
@@ -132,3 +127,68 @@ public class MovieRepository {
 
 
 }
+
+//**
+//
+// class Solution {
+//    public int findMaximizedCapital(int k, int w, int[] profits, int[] capital) {
+//        List<int []> list = new ArrayList<>();
+//
+//        for(int i = 0; i < profits.length; i ++) {
+//            list.add(new int []{profits[i], capital[i]});
+//        }
+//
+//        Collections.sort(list, new Comparator<int []>(){
+//            public int compare(int [] a, int [] b) {
+//                if(a[1] - b[1] != 0)
+//                    return a[1] - b[1];
+//                return b[0] - a[0];
+//            }
+//        });
+//
+//        PriorityQueue<int []> q = new PriorityQueue<int []>(new Comparator<>() {
+//            public int compare(int [] a, int [] b) {
+//                if(b[0] - a[0] != 0)
+//                    return b[0] - a[0];
+//
+//                return a[1] - b[1];
+//            }
+//        });
+//
+//        int n = list.size();
+//        int count = 0;
+//        for(int [] a : list) {
+//            System.out.print(Arrays.toString(a));
+//        }
+//
+//        for(int i = 0; i < n; i ++) {
+//            boolean in = false;
+//            while(i < n && list.get(i)[1] <= w) {
+//                q.add(new int []{profits[i], capital[i]});
+//                i ++;
+//                in = !in;
+//            }
+//            if(in) i --;
+//            if(q.isEmpty() || k <= 0)
+//                break;
+//            int [] curr = q.remove();
+//            w += curr[0];
+//            k --;
+//        }
+//
+//        while(k -- > 0 && !q.isEmpty()) {
+//            int [] curr = q.remove();
+//            w += curr[0];
+//        }
+//
+//        return w;
+//    }
+//}
+//
+///*
+//k = 1;
+//w = 20
+//[100, 200]
+//[10,  20]
+//*/
+// /
